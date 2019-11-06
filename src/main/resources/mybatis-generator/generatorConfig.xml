@@ -1,0 +1,83 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<!DOCTYPE generatorConfiguration-->
+        <!--PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"-->
+        <!--"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">-->
+<!--&lt;!&ndash; 配置生成器 &ndash;&gt;-->
+<!--<generatorConfiguration>-->
+    <!--&lt;!&ndash;执行generator插件生成文件的命令： call mvn mybatis-generator:generate -e &ndash;&gt;-->
+    <!--&lt;!&ndash; 引入配置文件 &ndash;&gt;-->
+    <!--<properties resource="application.properties"/>-->
+    <!--&lt;!&ndash;classPathEntry:数据库的JDBC驱动,换成你自己的驱动位置 可选 &ndash;&gt;-->
+    <!--&lt;!&ndash;<classPathEntry location="D:\generator_mybatis\mysql-connector-java-5.1.24-bin.jar" /> &ndash;&gt;-->
+
+    <!--&lt;!&ndash; 一个数据库一个context &ndash;&gt;-->
+    <!--&lt;!&ndash;defaultModelType="flat" 大数据字段，不分表 &ndash;&gt;-->
+    <!--<context id="MysqlTables" targetRuntime="MyBatis3Simple" defaultModelType="flat">-->
+        <!--&lt;!&ndash; 自动识别数据库关键字，默认false，如果设置为true，根据SqlReservedWords中定义的关键字列表；-->
+        <!--一般保留默认值，遇到数据库关键字（Java关键字），使用columnOverride覆盖 &ndash;&gt;-->
+        <!--<property name="autoDelimitKeywords" value="true" />-->
+        <!--&lt;!&ndash; 生成的Java文件的编码 &ndash;&gt;-->
+        <!--<property name="javaFileEncoding" value="utf-8" />-->
+        <!--&lt;!&ndash; beginningDelimiter和endingDelimiter：指明数据库的用于标记数据库对象名的符号，比如ORACLE就是双引号，MYSQL默认是`反引号； &ndash;&gt;-->
+        <!--<property name="beginningDelimiter" value="`" />-->
+        <!--<property name="endingDelimiter" value="`" />-->
+
+        <!--&lt;!&ndash; 格式化java代码 &ndash;&gt;-->
+        <!--<property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>-->
+        <!--&lt;!&ndash; 格式化XML代码 &ndash;&gt;-->
+        <!--<property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>-->
+        <!--<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />-->
+
+        <!--<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />-->
+
+        <!--&lt;!&ndash; 注释 &ndash;&gt;-->
+        <!--<commentGenerator >-->
+            <!--<property name="suppressAllComments" value="false"/>&lt;!&ndash; 是否取消注释 &ndash;&gt;-->
+            <!--<property name="suppressDate" value="true" /> &lt;!&ndash; 是否生成注释代时间戳&ndash;&gt;-->
+        <!--</commentGenerator>-->
+
+        <!--&lt;!&ndash; jdbc连接 &ndash;&gt;-->
+        <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="${spring.datasource.url}" userId="${spring.datasource.username}" password="${spring.datasource.password}" />-->
+        <!--&lt;!&ndash; 类型转换 &ndash;&gt;-->
+        <!--<javaTypeResolver>-->
+            <!--&lt;!&ndash; 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） &ndash;&gt;-->
+            <!--<property name="forceBigDecimals" value="false"/>-->
+        <!--</javaTypeResolver>-->
+
+        <!--&lt;!&ndash; 生成实体类地址 &ndash;&gt;-->
+        <!--<javaModelGenerator targetPackage="com.personal.myblog.entity" targetProject="src/main/java" >-->
+            <!--<property name="enableSubPackages" value="false"/>-->
+            <!--<property name="trimStrings" value="true"/>-->
+        <!--</javaModelGenerator>-->
+        <!--&lt;!&ndash; 生成mapxml文件 &ndash;&gt;-->
+        <!--<sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources" >-->
+            <!--<property name="enableSubPackages" value="false" />-->
+        <!--</sqlMapGenerator>-->
+        <!--&lt;!&ndash; 生成mapxml对应client，也就是接口dao &ndash;&gt;-->
+        <!--<javaClientGenerator targetPackage="com.personal.myblog.dao" targetProject="src/main/java" type="XMLMAPPER" >-->
+            <!--<property name="enableSubPackages" value="false" />-->
+        <!--</javaClientGenerator>-->
+        <!--&lt;!&ndash; table可以有多个,每个数据库中的表都可以写一个table，tableName表示要匹配的数据库表,也可以在tableName属性中通过使用%通配符来匹配所有数据库表,只有匹配的表才会自动生成文件 &ndash;&gt;-->
+        <!--&lt;!&ndash;如何给生成字段为驼峰值或者跟表字段名称一样,添加属性useActualColumnNames为true,那么生成的对象字段就跟表一样&ndash;&gt;-->
+        <!--<table tableName="user" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">-->
+            <!--<property name="useActualColumnNames" value="true" />-->
+            <!--&lt;!&ndash; 数据库表主键 &ndash;&gt;-->
+            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true" />-->
+        <!--</table>-->
+
+        <!--<table tableName="article" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">-->
+            <!--<property name="useActualColumnNames" value="true" />-->
+            <!--&lt;!&ndash; 数据库表主键 &ndash;&gt;-->
+            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true" />-->
+        <!--</table>-->
+
+        <!--<table tableName="role_permission" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">-->
+            <!--<property name="useActualColumnNames" value="true" />-->
+            <!--&lt;!&ndash; 数据库表主键 &ndash;&gt;-->
+            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true" />-->
+        <!--</table>-->
+
+    <!--</context>-->
+
+
+<!--</generatorConfiguration>-->

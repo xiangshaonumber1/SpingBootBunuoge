@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.xiangshao.bunuoge.mapper.AdminMapper">
+
+    <select id="getFeedBackMessages" resultType="TblFeedBackInfo">
+        SELECT * FROM tbl_feedback_info
+        <where>
+            <if test="feedId !=null and feedId !=''">and feed_id = #{feedId}</if>
+            <if test="openId !=null and openId !=''">and open_id = #{openId}</if>
+            <if test="contactType !=null and contactType !=''">and contact_type = #{contactType}</if>
+            <if test="userType !=null and userType !=''">and user_type = #{userType}</if>
+            <if test="creatTime !=null and creatTime !=''">and creat_time = #{creatTime}</if>
+            <if test="dealTime !=null and dealTime !=''">and deal_time = #{dealTime}</if>
+            <if test="status !=null and status !=''">and 'status' = #{status}</if>
+        </where>
+    </select>
+
+    <select id="getAdminUserInfos" resultType="TblUserInfoResult">
+        SELECT A.open_id,A.username,A.status,A.creat_time,A.role,A.permission,B.nickname,B.gender,B.email,B.phone,B.avatar FROM tbl_account_info A
+        LEFT JOIN tbl_user_info B ON A.open_id = B.open_id
+        <where>
+            <if test="openId !=null and openId !=''">and open_id = #{openId}</if>
+            <if test="status !=null and status !=''">and 'status' = #{status}</if>
+            <if test="creatTime !=null and creatTime !=''">and creat_time = #{creatTime}</if>
+            <if test="email !=null and email !=''">and email = #{email}</if>
+            <if test="phone !=null and phone !=''">and phone = #{phone}</if>
+            <if test="username !=null and username !=''">and username = #{username}</if>
+            <if test="nickname !=null and nickname !=''">and nickname like '%${nickname}%'</if>
+        </where>
+    </select>
+
+    <update id="dealArticle">
+        update tbl_article_info A set A.status = #{status}
+        <where>
+            A.article_id in
+            <foreach collection="articleIds" item="item" index="index" open="(" close=")" separator=","> #{item}</foreach>
+        </where>
+    </update>
+
+    <update id="restPassword">
+        update tbl_account_info A set A.salt = #{salt}, A.password = #{password}
+        <where>
+            A.open_id in
+            <foreach collection="openIds" item="item" index="index" open="(" close=")" separator=",">#{item}</foreach>
+        </where>
+    </update>
+
+</mapper>
